@@ -1,0 +1,54 @@
+<div class="backdrop" (click)="close.emit()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <span>
+        <strong>{{ image().file_name }}</strong>
+        ({{ image().annotationCount }} anotações)
+      </span>
+      <button type="button" (click)="close.emit()">Fechar</button>
+    </div>
+
+    <div class="image-container">
+      <div class="image-wrapper">
+        <img [src]="'dataset/images/' + image().file_name" [alt]="image().file_name" />
+
+        <!-- SVG sobreposto com viewBox igual às dimensões originais da foto -->
+        <svg
+          class="bbox-svg"
+          [attr.viewBox]="'0 0 ' + image().width + ' ' + image().height"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          @for (ann of image().annotations; track ann.id) {
+            @let label = datasetService.getCategoryName(ann.category_id);
+            @let color = datasetService.getCategoryColor(label);
+
+            <g>
+              <!-- Caixa retangular (bbox = [x, y, largura, altura]) -->
+              <rect
+                [attr.x]="ann.bbox[0]"
+                [attr.y]="ann.bbox[1]"
+                [attr.width]="ann.bbox[2]"
+                [attr.height]="ann.bbox[3]"
+                [attr.stroke]="color"
+                [attr.fill]="color"
+                fill-opacity="0.15"
+                stroke-width="8"
+              />
+
+              <!-- Nome da classe acima da caixa -->
+              <text
+                [attr.x]="ann.bbox[0]"
+                [attr.y]="ann.bbox[1] > 45 ? ann.bbox[1] - 12 : ann.bbox[1] + 45"
+                [attr.fill]="color"
+                font-size="42"
+                font-weight="bold"
+              >
+                {{ label }}
+              </text>
+            </g>
+          }
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

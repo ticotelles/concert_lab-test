@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { EnrichedImage } from '../../../../core/interfaces/coco.interface';
 
 @Component({
@@ -10,4 +10,5 @@ import { EnrichedImage } from '../../../../core/interfaces/coco.interface';
 })
 export class ImageGallery {
   readonly images = input.required<EnrichedImage[]>();
+  readonly selectImage = output<number>();
 }

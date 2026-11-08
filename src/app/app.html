@@ -1,3 +1,13 @@
 <h1>Galeria do Dataset</h1>
 
-<app-image-gallery [images]="datasetService.images()" />
+<app-image-gallery [images]="datasetService.images()" 
+(selectImage)="datasetService.selectedImageId.set($event)"
+/>
+
+@if (datasetService.activeModalImage(); as selectedImg) {
+  <app-annotation-modal
+    [image]="selectedImg"
+    (close)="datasetService.selectedImageId.set(null)"
+  />
+}
+

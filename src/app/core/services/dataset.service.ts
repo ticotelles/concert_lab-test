@@ -2,21 +2,28 @@ import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CocoDataset, CocoAnnotation, EnrichedImage } from '../interfaces/coco.interface';
 
+const CATEGORY_COLORS: Record<string, string> = {
+  pessoa: '#2563eb',       // Azul
+  capacete: '#16a34a',     // Verde
+  colete: '#d97706',       // Âmbar
+  sem_capacete: '#dc2626'  // Vermelho
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class DatasetService {
   private readonly http = inject(HttpClient);
 
-  // Guarda o JSON carregado
   readonly dataset = signal<CocoDataset | null>(null);
+  
+  // Guarda o ID da imagem clicada (null = modal fechado)
+  readonly selectedImageId = signal<number | null>(null);
 
-  // Prepara a lista de imagens já com a contagem de anotações de cada uma
   readonly images = computed<EnrichedImage[]>(() => {
     const data = this.dataset();
     if (!data) return [];
 
-    // Agrupa anotações por image_id
     const annsByImage = new Map<number, CocoAnnotation[]>();
     for (const ann of data.annotations) {
       const list = annsByImage.get(ann.image_id) ?? [];
@@ -24,7 +31,6 @@ export class DatasetService {
       annsByImage.set(ann.image_id, list);
     }
 
-    // Retorna cada imagem com sua lista e contagem de anotações
     return data.images.map((img) => {
       const annotations = annsByImage.get(img.id) ?? [];
       return {
@@ -36,6 +42,13 @@ export class DatasetService {
     });
   });
 
+  // Devolve os dados completos da imagem clicada
+  readonly activeModalImage = computed<EnrichedImage | null>(() => {
+    const id = this.selectedImageId();
+    if (id === null) return null;
+    return this.images().find((img) => img.id === id) ?? null;
+  });
+
   constructor() {
     this.loadDefaultDataset();
   }
@@ -44,5 +57,13 @@ export class DatasetService {
     this.http.get<CocoDataset>('dataset/annotations_coco.json').subscribe((data) => {
       this.dataset.set(data);
     });
+  }
+
+  getCategoryName(categoryId: number): string {
+    return this.dataset()?.categories.find((c) => c.id === categoryId)?.name ?? 'Desconhecido';
+  }
+
+  getCategoryColor(categoryName: string): string {
+    return CATEGORY_COLORS[categoryName] ?? '#64748b';
   }
 }

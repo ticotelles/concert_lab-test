@@ -1,6 +1,6 @@
 <div class="gallery">
   @for (img of images(); track img.id) {
-    <div class="card">
+    <div class="card" (click)="selectImage.emit(img.id)">
       <img
         [src]="'dataset/images/' + img.file_name"
         [alt]="img.file_name"
