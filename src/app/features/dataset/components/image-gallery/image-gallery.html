@@ -1,0 +1,15 @@
+<div class="gallery">
+  @for (img of images(); track img.id) {
+    <div class="card">
+      <img
+        [src]="'dataset/images/' + img.file_name"
+        [alt]="img.file_name"
+        loading="lazy"
+      />
+      <p><strong>{{ img.file_name }}</strong></p>
+      <p>{{ img.annotationCount }} anotações</p>
+    </div>
+  } @empty {
+    <p>Carregando imagens...</p>
+  }
+</div>
