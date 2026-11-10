@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { CocoDataset, CocoAnnotation, EnrichedImage } from '../interfaces/coco.interface';
 
 const CATEGORY_COLORS: Record<string, string> = {
-  pessoa: '#2563eb',       // Azul
-  capacete: '#16a34a',     // Verde
-  colete: '#d97706',       // Âmbar
-  sem_capacete: '#dc2626'  // Vermelho
+  pessoa: '#2563eb',       
+  capacete: '#16a34a',     
+  colete: '#d97706',       
+  sem_capacete: '#dc2626' 
 };
 
 @Injectable({
