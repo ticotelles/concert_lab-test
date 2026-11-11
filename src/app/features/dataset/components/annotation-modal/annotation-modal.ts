@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, input, output, inject } from '@angular/core';
-import { EnrichedImage } from '../../../../core/interfaces/coco.interface';
+import { ImagemDetalhada } from '../../../../core/interfaces/coco.interface';
 import { DatasetService } from '../../../../core/services/dataset.service';
 
 @Component({
@@ -11,6 +11,6 @@ import { DatasetService } from '../../../../core/services/dataset.service';
 })
 export class AnnotationModal {
   readonly datasetService = inject(DatasetService);
-  readonly image = input.required<EnrichedImage>();
+  readonly image = input.required<ImagemDetalhada>();
   readonly close = output<void>();
 }

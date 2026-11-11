@@ -1,0 +1,36 @@
+.filter-nav {
+  display: flex;
+  gap: 1.25rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.filter-tab {
+  background: transparent;
+  border: none;
+  padding: 0.25rem 0;
+  font-size: 0.85rem;
+  color: #777;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.filter-tab:hover {
+  color: #111;
+}
+
+.filter-tab.active {
+  color: #111;
+  font-weight: 600;
+}
+
+.filter-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #111;
+}

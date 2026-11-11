@@ -1,15 +1,22 @@
-<div class="gallery">
-  @for (img of images(); track img.id) {
-    <div class="card" (click)="selectImage.emit(img.id)">
-      <img
-        [src]="'dataset/images/' + img.file_name"
-        [alt]="img.file_name"
-        loading="lazy"
-      />
-      <p><strong>{{ img.file_name }}</strong></p>
-      <p>{{ img.annotationCount }} anotações</p>
-    </div>
-  } @empty {
-    <p>Carregando imagens...</p>
-  }
+<div class="gallery-container">
+  <!-- Componente Filtro Isolado -->
+  <app-image-filter (categoryChange)="onCategoryChange($event)" />
+
+  <!-- Galeria Compacta -->
+  <div class="gallery">
+    @for (img of filteredImages(); track img.id) {
+      <div class="card" (click)="selectImage.emit(img.id)">
+        <img
+          [src]="'dataset/images/' + img.file_name"
+          [alt]="img.file_name"
+          loading="lazy"
+        />
+        <p><strong>{{ img.file_name }}</strong></p>
+        <p>{{ img.annotationCount }} anotações</p>
+        <!-- <p>Classes: {{ img.categoryIds?.join(', ') }}</p> -->
+      </div>
+    } @empty {
+      <p class="empty-state">Nenhuma imagem encontrada.</p>
+    }
+  </div>
 </div>

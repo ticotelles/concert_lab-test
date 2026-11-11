@@ -1,1 +1,12 @@
-<p>filter works!</p>
+<nav class="filter-nav">
+  @for (cat of categories; track cat.label) {
+    <button
+      type="button"
+      class="filter-tab"
+      [class.active]="selectedCategoryId() === cat.id"
+      (click)="selectCategory(cat.id)"
+    >
+      {{ cat.label }}
+    </button>
+  }
+</nav>

@@ -26,7 +26,13 @@ export interface CocoCategory {
 }
 
 // Adicione estas abaixo para a galeria e estatísticas:
-export interface EnrichedImage extends CocoImage {
+// export interface EnrichedImage extends CocoImage {
+//   annotations: CocoAnnotation[];
+//   annotationCount: number;
+//   categoryIds: number[];
+// }
+
+export interface ImagemDetalhada extends CocoImage {
   annotations: CocoAnnotation[];
   annotationCount: number;
   categoryIds: number[];

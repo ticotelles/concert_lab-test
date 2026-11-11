@@ -1,6 +1,6 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CocoDataset, CocoAnnotation, EnrichedImage } from '../interfaces/coco.interface';
+import { CocoDataset, CocoAnnotation, ImagemDetalhada } from '../interfaces/coco.interface';
 
 const CATEGORY_COLORS: Record<string, string> = {
   pessoa: '#2563eb',       
@@ -20,19 +20,19 @@ export class DatasetService {
   // Guarda o ID da imagem clicada (null = modal fechado)
   readonly selectedImageId = signal<number | null>(null);
 
-  readonly images = computed<EnrichedImage[]>(() => {
+  readonly images = computed<ImagemDetalhada[]>(() => {
     const data = this.dataset();
     if (!data) return [];
 
-    const annsByImage = new Map<number, CocoAnnotation[]>();
+    const anotacaoImages = new Map<number, CocoAnnotation[]>();
     for (const ann of data.annotations) {
-      const list = annsByImage.get(ann.image_id) ?? [];
+      const list = anotacaoImages.get(ann.image_id) ?? [];
       list.push(ann);
-      annsByImage.set(ann.image_id, list);
+      anotacaoImages.set(ann.image_id, list);
     }
 
     return data.images.map((img) => {
-      const annotations = annsByImage.get(img.id) ?? [];
+      const annotations = anotacaoImages.get(img.id) ?? [];
       return {
         ...img,
         annotations,
@@ -43,7 +43,7 @@ export class DatasetService {
   });
 
   // Devolve os dados completos da imagem clicada
-  readonly activeModalImage = computed<EnrichedImage | null>(() => {
+  readonly activeModalImage = computed<ImagemDetalhada | null>(() => {
     const id = this.selectedImageId();
     if (id === null) return null;
     return this.images().find((img) => img.id === id) ?? null;
