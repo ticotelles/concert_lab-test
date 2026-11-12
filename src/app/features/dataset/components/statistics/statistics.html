@@ -20,11 +20,12 @@
   <!-- Contagem por Classe -->
   <div class="categories-summary">
     <span class="summary-title">Anotações por Classe:</span>
+    <!-- <strong>{{ stats().totalPorClasses.size }}</strong> -->
     <div class="chips-group">
-      @for (cat of stats().categoriesCount; track cat.name) {
+      @for (cat of stats().totalPorClasses; track cat[0]) {
         <div class="category-chip">
-          <span class="cat-name">{{ cat.name }}</span>
-          <span class="cat-badge">{{ cat.count }}</span>
+          <span class="cat-name">{{ cat[0] }}</span>
+          <span class="cat-badge">{{ cat[1] }}</span>
         </div>
       }
     </div>

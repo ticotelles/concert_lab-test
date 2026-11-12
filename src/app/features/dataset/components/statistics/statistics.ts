@@ -23,9 +23,25 @@ export class Statistics {
     const imgList = this.images();
     const catList = this.categories();
 
+    console.log("imgList", imgList);
+
     const totalImages = imgList.length;
     const totalAnnotations = imgList.reduce((acc, img) => acc + (img.annotationCount || 0), 0);
     const averagePerImage = totalImages > 0 ? (totalAnnotations / totalImages).toFixed(1) : '0';
+
+
+    const totalPorClasses = new Map<number, number>();
+
+    for(const img of imgList) {
+      if(img.categoryIds) {
+        for(const catId of img.categoryIds) {
+          const currentCount = totalPorClasses.get(catId) || 0;
+          totalPorClasses.set(catId, currentCount + 1);
+        }
+      }
+    }
+
+    console.log("totalPorClasses", totalPorClasses);
 
     // Contagem de anotações por categoria
     const categoryCountsMap = new Map<number, number>();
@@ -49,7 +65,8 @@ export class Statistics {
       totalImages,
       totalAnnotations,
       averagePerImage,
-      categoriesCount
+      categoriesCount,
+      totalPorClasses
     };
   });
 }
