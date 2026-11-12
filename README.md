@@ -110,6 +110,7 @@ A aplicação carrega esse arquivo via `DatasetService` e exibe as imagens e det
 ## Parte 1: Critérios de Anotação e Dificuldades Encontradas
 
 As anotações foram realizadas na ferramenta makesense.ai utilizando quatro classes: pessoa, capacete, colete e sem_capacete.
+Ao todo foram baixadas 60 imagens do [Pexels](https://www.pexels.com/pt-br/)
 
 ## Critérios Adotados
 
