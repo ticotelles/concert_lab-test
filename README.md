@@ -107,40 +107,6 @@ A aplicação carrega esse arquivo via `DatasetService` e exibe as imagens e det
 
 
 
-
-## Dicas de solução de problemas
-
-### Erro de dependências ou módulos ausentes
-
-Execute:
-
-```bash
-rm -rf node_modules package-lock.json
-npm install
-```
-
-No Windows, use PowerShell:
-
-```powershell
-Remove-Item -Recurse -Force node_modules, package-lock.json
-npm install
-```
-
-
-
-### Projeto não abre no navegador
-
-Confirme se o terminal mostra uma mensagem como:
-
-```text
-** Angular Live Development Server is listening on localhost:4200 **
-```
-
-E acesse a URL informada.
-
-
-
-
 ## Parte 1: Critérios de Anotação e Dificuldades Encontradas
 
 As anotações foram realizadas na ferramenta makesense.ai utilizando quatro classes: pessoa, capacete, colete e sem_capacete.
