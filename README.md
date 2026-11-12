@@ -67,21 +67,32 @@ A aplicação vai recarregar automaticamente quando você alterar os arquivos do
 
 ```text
 Concert-Test/
-├─ public/
-│  └─ dataset/
-│     ├─ annotations_coco.json
-│     ├─ annotations_yolo/
-│     └─ images/
-├─ src/
-│  ├─ app/
-│  ├─ main.ts
-│  ├─ styles.css
-│  └─ index.html
-├─ angular.json
-├─ package.json
-├─ tsconfig.json
-├─ README.md
-└─ .gitignore
+public/
+└── dataset/
+    ├── annotations_yolo/
+    ├── images/
+    └── annotations_coco.json
+
+src/
+└── app/
+    ├── core/
+    │   ├── interfaces/
+    │   └── services/
+    │
+    ├── features/
+    │   └── dataset/
+    │       └── components/
+    │           ├── annotation-modal/
+    │           ├── filter/
+    │           ├── image-gallery/
+    │           └── statistics/
+    │
+    ├── app.config.ts
+    ├── app.css
+    ├── app.html
+    ├── app.routes.ts
+    ├── app.spec.ts
+    └── app.ts
 ```
 
 ## Como o projeto funciona
