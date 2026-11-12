@@ -23,7 +23,7 @@ export class ImageGallery {
     const allImages = this.images();
     const classesImage = allImages.map(img => img.categoryIds)
 
-    console.log('Classes das imagens:', classesImage);
+ 
 
     if (categoryId === null) {
       return allImages;

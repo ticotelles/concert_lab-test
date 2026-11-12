@@ -23,7 +23,7 @@ export class Statistics {
     const imgList = this.images();
     const catList = this.categories();
 
-    console.log("imgList", imgList);
+
 
     const totalImages = imgList.length;
     const totalAnnotations = imgList.reduce((acc, img) => acc + (img.annotationCount || 0), 0);
@@ -41,7 +41,7 @@ export class Statistics {
       }
     }
 
-    console.log("totalPorClasses", totalPorClasses);
+
 
     // Contagem de anotações por categoria
     const categoryCountsMap = new Map<number, number>();
