@@ -25,12 +25,7 @@ export interface CocoCategory {
   name: 'pessoa' | 'capacete' | 'colete' | 'sem_capacete' | string;
 }
 
-// Adicione estas abaixo para a galeria e estatísticas:
-// export interface EnrichedImage extends CocoImage {
-//   annotations: CocoAnnotation[];
-//   annotationCount: number;
-//   categoryIds: number[];
-// }
+
 
 export interface ImagemDetalhada extends CocoImage {
   annotations: CocoAnnotation[];
@@ -38,16 +33,16 @@ export interface ImagemDetalhada extends CocoImage {
   categoryIds: number[];
 }
 
-export interface CategoryStat {
-  id: number;
-  name: string;
-  count: number;
-  color: string;
-}
+// export interface CategoryStat {
+//   id: number;
+//   name: string;
+//   count: number;
+//   color: string;
+// }
 
-export interface DatasetStats {
-  totalImages: number;
-  totalAnnotations: number;
-  averagePerImage: number;
-  categoriesCount: CategoryStat[];
-}
+// export interface DatasetStats {
+//   totalImages: number;
+//   totalAnnotations: number;
+//   averagePerImage: number;
+//   categoriesCount: CategoryStat[];
+// }

@@ -1,5 +1,4 @@
 import { Component, signal, ChangeDetectionStrategy, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ImageGallery } from './features/dataset/components/image-gallery/image-gallery';
 import { DatasetService } from './core/services/dataset.service';
 import { AnnotationModal } from './features/dataset/components/annotation-modal/annotation-modal';
@@ -8,7 +7,7 @@ import { AnnotationModal } from './features/dataset/components/annotation-modal/
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ImageGallery, AnnotationModal],
+  imports: [ImageGallery, AnnotationModal],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
