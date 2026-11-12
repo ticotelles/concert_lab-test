@@ -3,17 +3,23 @@
   gap: 1.25rem;
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filter-tab {
   background: transparent;
   border: none;
-  padding: 0.25rem 0;
+  padding: 12px;
   font-size: 0.85rem;
-  color: #777;
+  color: #454343;
   cursor: pointer;
   position: relative;
   transition: color 0.2s ease;
+  background-color: rgb(142, 177, 212);
+  border-radius: 8px;
+
 }
 
 .filter-tab:hover {
