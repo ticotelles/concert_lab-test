@@ -1,1 +1,32 @@
-<p>statistics works!</p>
+<div class="stats-container">
+  <!-- Métricas Principais -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total de Imagens</span>
+      <strong class="stat-value">{{ stats().totalImages }}</strong>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Total de Anotações</span>
+      <strong class="stat-value">{{ stats().totalAnnotations }}</strong>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Média por Imagem</span>
+      <strong class="stat-value">{{ stats().averagePerImage }}</strong>
+    </div>
+  </div>
+
+  <!-- Contagem por Classe -->
+  <div class="categories-summary">
+    <span class="summary-title">Anotações por Classe:</span>
+    <div class="chips-group">
+      @for (cat of stats().categoriesCount; track cat.name) {
+        <div class="category-chip">
+          <span class="cat-name">{{ cat.name }}</span>
+          <span class="cat-badge">{{ cat.count }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

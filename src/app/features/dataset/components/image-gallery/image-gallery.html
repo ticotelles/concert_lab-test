@@ -2,6 +2,11 @@
   <!-- Componente Filtro Isolado -->
   <app-image-filter (categoryChange)="onCategoryChange($event)" />
 
+  <app-statistics 
+  [images]="images()" 
+  [categories]="categories()" 
+/>
+
   <!-- Galeria Compacta -->
   <div class="gallery">
     @for (img of filteredImages(); track img.id) {
