@@ -16,6 +16,9 @@ export class DatasetService {
   private readonly http = inject(HttpClient);
 
   readonly dataset = signal<CocoDataset | null>(null);
+  readonly errorMessage = signal<string | null>(null);
+
+
   
   // Guarda o ID da imagem clicada (null = modal fechado)
   readonly selectedImageId = signal<number | null>(null);
@@ -53,11 +56,37 @@ export class DatasetService {
     this.loadDefaultDataset();
   }
 
+  // loadDefaultDataset(): void {
+  //  const data = this.http.get<CocoDataset>('dataset/annotations_coco.json')
+
+  //  console.log("data: ", data);
+    
+  //  if(typeof data !== 'object' || data === null) {
+  //   throw new Error('O dataset não é um objeto válido.');
+  //  }
+
+  //   this.http.get<CocoDataset>('dataset/annotations_coco.json').subscribe((data) => {
+  //     this.dataset.set(data);
+  //   });
+  // }
+
   loadDefaultDataset(): void {
-    this.http.get<CocoDataset>('dataset/annotations_coco.json').subscribe((data) => {
+  this.errorMessage.set(null);
+
+  this.http.get<CocoDataset>('dataset/annotations_coco.json').subscribe({
+    next: (data) => {
+      if (!data || typeof data !== 'object' || !Array.isArray(data.images)) {
+        this.errorMessage.set('O dataset não é um objeto válido.');
+        return;
+      }
       this.dataset.set(data);
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Erro ao carregar dataset:', err);
+      this.errorMessage.set('Não foi possível carregar o dataset.');
+    }
+  });
+}
 
   getCategoryName(categoryId: number): string {
     return this.dataset()?.categories.find((c) => c.id === categoryId)?.name ?? 'Desconhecido';

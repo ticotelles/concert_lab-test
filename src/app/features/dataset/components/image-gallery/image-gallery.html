@@ -1,5 +1,5 @@
 <div class="gallery-container">
-  <!-- Componente Filtro Isolado -->
+  
   <app-image-filter (categoryChange)="onCategoryChange($event)" />
 
   <app-statistics 
@@ -7,7 +7,7 @@
   [categories]="categories()" 
 />
 
-  <!-- Galeria Compacta -->
+ 
   <div class="gallery">
     @for (img of filteredImages(); track img.id) {
       <div class="card" (click)="selectImage.emit(img.id)">
@@ -24,4 +24,18 @@
       <p class="empty-state">Nenhuma imagem encontrada.</p>
     }
   </div>
+
+  @if (datasetService.errorMessage(); as erro) {
+  <div role="alert" class="p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 flex items-center justify-between">
+    <span>{{ erro }}</span>
+    <button 
+      type="button"
+      (click)="datasetService.loadDefaultDataset()"
+      class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700">
+      Tentar novamente
+    </button>
+  </div>
+} @else {
+  
+}
 </div>

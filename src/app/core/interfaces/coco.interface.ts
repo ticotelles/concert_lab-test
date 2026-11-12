@@ -32,17 +32,3 @@ export interface ImagemDetalhada extends CocoImage {
   annotationCount: number;
   categoryIds: number[];
 }
-
-// export interface CategoryStat {
-//   id: number;
-//   name: string;
-//   count: number;
-//   color: string;
-// }
-
-// export interface DatasetStats {
-//   totalImages: number;
-//   totalAnnotations: number;
-//   averagePerImage: number;
-//   categoriesCount: CategoryStat[];
-// }

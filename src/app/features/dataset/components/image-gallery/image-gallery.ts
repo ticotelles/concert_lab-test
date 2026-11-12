@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy, input, output, signal, computed } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output, signal, computed, inject } from '@angular/core';
 import { CocoCategory, ImagemDetalhada } from '../../../../core/interfaces/coco.interface';
 import { ImageFilter, CategoryFilter } from '../filter/filter';
 import { Statistics } from '../statistics/statistics';
+import { DatasetService } from '../../../../core/services/dataset.service';
 
 @Component({
   selector: 'app-image-gallery',
@@ -16,6 +17,7 @@ export class ImageGallery {
   readonly selectImage = output<number>();
   readonly categories = input<CocoCategory[]>([]);
   readonly selectedCategoryId = signal<CategoryFilter>(null);
+  protected readonly datasetService = inject(DatasetService);
 
   // Filtra as imagens sem recriar referências desnecessárias
   readonly filteredImages = computed(() => {

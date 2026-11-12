@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Filter } from './filter';
+import { ImageFilter } from './filter';
 
-describe('Filter', () => {
-  let component: Filter;
-  let fixture: ComponentFixture<Filter>;
-
+describe('ImageFilter', () => {
+  let component: ImageFilter;
+  let fixture: ComponentFixture<ImageFilter>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Filter],
+      imports: [ImageFilter],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Filter);
+    fixture = TestBed.createComponent(ImageFilter);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
