@@ -11,10 +11,10 @@ export type CategoryFilter = number | null;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageFilter {
-  // Emite a categoria selecionada para o componente pai
+ 
   readonly categoryChange = output<CategoryFilter>();
 
-  // Categoria ativa internamente para feedback visual instantâneo
+
   readonly selectedCategoryId = signal<CategoryFilter>(null);
   
   readonly categories = [

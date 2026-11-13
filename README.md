@@ -128,9 +128,8 @@ Oclusões Parciais em Obras: Em fotos com equipes trabalhando próximas, ferrame
 
 Casos Ambíguos de Proteção na Cabeça: Em algumas imagens, trabalhadores utilizavam bonés, toucas ou capuzes sob o capacete (ou no lugar dele). Nesses casos, adotou-se o critério rigoroso de marcar sem_capacete sempre que não se tratava claramente de um capacete rígido de segurança.
 
-Coletes Desabotoados ou Parcialmente Visíveis: Quando o trabalhador estava de perfil ou de costas com mochila/equipamentos, identificar e delimitar o colete refletivo exigiu análise cuidadosa para não confundir faixas de roupas comuns com EPI.
+Coletes Parcialmente Visíveis: Quando o trabalhador estava de perfil ou de costas com mochila/equipamentos, identificar e delimitar o colete refletivo exigiu análise cuidadosa para não confundir faixas de roupas comuns com EPI.
 
-Algumas imagens tinha uma pessoa segurando no braço o capacete, surgiu a dúvida se deveria fazer a anotação como "Capacete", porque da a entender que a pessoa está usando o capacete corretamente.
 
 
 
@@ -147,9 +146,11 @@ features/dataset/components: Componentes pequenos e desacoplados (statistics, fi
 
 ### Dificuldades Técnicas no Desenvolvimento
 
-Dificuldade inicial de entender como o Angular funciona, sintaxes, etc.
+Dificuldade inicial de entender como o Angular funciona, como os componentes se comunicam, sintaxes, etc.
 
 Sincronização de IDs das Categorias: Como ferramentas de anotação geram os IDs das categorias conforme a ordem em que são criadas, foi necessário garantir o mapeamento dinâmico entre o array categories do JSON e os category_id presentes nas anotações, evitando divergências nos filtros e nas contagens estatísticas.
+
+O componente de estatistica está incompleto, não está pegando os valores corretos.
 
 
 ## O que eu faria de diferente com mais tempo

@@ -12,7 +12,7 @@
       <div class="image-wrapper">
         <img [src]="'dataset/images/' + image().file_name" [alt]="image().file_name" />
 
-        <!-- SVG sobreposto com viewBox igual às dimensões originais da foto -->
+       
         <svg
           class="bbox-svg"
           [attr.viewBox]="'0 0 ' + image().width + ' ' + image().height"
@@ -23,7 +23,6 @@
             @let color = datasetService.getCategoryColor(label);
 
             <g>
-              <!-- Caixa retangular (bbox = [x, y, largura, altura]) -->
               <rect
                 [attr.x]="ann.bbox[0]"
                 [attr.y]="ann.bbox[1]"
@@ -35,7 +34,7 @@
                 stroke-width="8"
               />
 
-              <!-- Nome da classe acima da caixa -->
+              
               <text
                 [attr.x]="ann.bbox[0]"
                 [attr.y]="ann.bbox[1] > 45 ? ann.bbox[1] - 12 : ann.bbox[1] + 45"

@@ -18,7 +18,7 @@ export class Statistics {
   readonly images = input.required<ImagemDetalhada[]>();
   readonly categories = input<CocoCategory[]>([]);
 
-  // O cálculo é feito apenas uma vez por atualização da lista, respeitando o requisito de performance
+
   readonly stats = computed(() => {
     const imgList = this.images();
     const catList = this.categories();
@@ -43,7 +43,7 @@ export class Statistics {
 
 
 
-    // Contagem de anotações por categoria
+
     const categoryCountsMap = new Map<number, number>();
 
     for (const img of imgList) {
@@ -55,7 +55,7 @@ export class Statistics {
       }
     }
 
-    // Mapeia para o nome da categoria correspondente
+
     const categoriesCount: CategoryCount[] = catList.map(cat => ({
       name: cat.name,
       count: categoryCountsMap.get(cat.id) || 0
