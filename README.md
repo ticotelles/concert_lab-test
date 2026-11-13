@@ -102,6 +102,8 @@ O dataset principal está em:
 ```text
 public/dataset/annotations_coco.json
 ```
+## Obs: 
+O arquivo deve ter exatamente o nome "annotations_coco.json" e deve está localizado em public/dataset/annotations_coco.json.
 
 A aplicação carrega esse arquivo via `DatasetService` e exibe as imagens e detalhes das anotações na interface.
 
@@ -155,6 +157,10 @@ Sincronização de IDs das Categorias: Como ferramentas de anotação geram os I
 Testes Automatizados: Implementaria testes unitários para validar o parser do COCO JSON, os cálculos de estatísticas e o comportamento dos filtros em cenários de erro ou arquivos corrompidos.
 
 File-upload: implementaria o componente para fazer o upload dos arquivos e fotos
+
+Validação para verificar somente se tem o arquivo JSON em public/dataset,  atualmente o arquivo obrigatoriamente deve ter o nome 'annotations_coco.json'
+
+validação se o arquivo JSON possui images, annotations, categories
 
 
 
