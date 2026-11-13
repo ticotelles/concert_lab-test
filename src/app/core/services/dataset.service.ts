@@ -56,19 +56,6 @@ export class DatasetService {
     this.loadDefaultDataset();
   }
 
-  // loadDefaultDataset(): void {
-  //  const data = this.http.get<CocoDataset>('dataset/annotations_coco.json')
-
-  //  console.log("data: ", data);
-    
-  //  if(typeof data !== 'object' || data === null) {
-  //   throw new Error('O dataset não é um objeto válido.');
-  //  }
-
-  //   this.http.get<CocoDataset>('dataset/annotations_coco.json').subscribe((data) => {
-  //     this.dataset.set(data);
-  //   });
-  // }
 
   loadDefaultDataset(): void {
   this.errorMessage.set(null);
